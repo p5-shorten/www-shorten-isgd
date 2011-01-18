@@ -1,15 +1,16 @@
 NAME
-    WWW::Shorten::IsGd - Shorten (or lengthen) URLs with http://is.gd
+    WWW::Shorten::IsGd - shorten (or lengthen) URLs with http://is.gd
 
 VERSION
     version 0.001
 
 SYNOPSIS
             use WWW::Shorten::IsGd;
+            use WWW::Shorten 'IsGd';
 
-            my $url = q{http://averylong.link/wow?thats=really&really=long};
-            my $short_url = makeashorterlink($url);
-            my $long_url  = makealongerlink($short_url); # eq $url
+        my $url = q{http://averylong.link/wow?thats=really&really=long};
+        my $short_url = makeashorterlink($url);
+        my $long_url  = makealongerlink($short_url); # eq $url
 
 DESCRIPTION
     A Perl interface to the web site <http://is.gd>. is.gd simply maintains

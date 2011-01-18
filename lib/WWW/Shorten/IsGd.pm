@@ -3,15 +3,16 @@ use warnings;
 use 5.006;
 
 package WWW::Shorten::IsGd;
-# ABSTRACT: Shorten (or lengthen) URLs with http://is.gd
+# ABSTRACT: shorten (or lengthen) URLs with http://is.gd
 
 =head1 SYNOPSIS
 
 	use WWW::Shorten::IsGd;
+	use WWW::Shorten 'IsGd';
 
-	my $url = q{http://averylong.link/wow?thats=really&really=long};
-	my $short_url = makeashorterlink($url);
-	my $long_url  = makealongerlink($short_url); # eq $url
+    my $url = q{http://averylong.link/wow?thats=really&really=long};
+    my $short_url = makeashorterlink($url);
+    my $long_url  = makealongerlink($short_url); # eq $url
 
 =head1 DESCRIPTION
 
