@@ -26,7 +26,7 @@ our @EXPORT = qw( makeashorterlink makealongerlink );
 use Carp;
 use URI;
 
-=head1 Functions
+=head1 FUNCTIONS
 
 =head2 makeashorterlink
 
