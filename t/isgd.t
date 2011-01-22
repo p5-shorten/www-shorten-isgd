@@ -1,25 +1,32 @@
 use strict;
 use warnings;
-use Test::More tests => 6;
+use Test::More tests => 7;
 
 BEGIN {
-    use_ok 'WWW::Shorten::IsGd';
+    use_ok('WWW::Shorten::IsGd');
 };
 
 my $longurl = q{http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=louth&sll=53.800651,-4.064941&sspn=33.219383,38.803711&ie=UTF8&hq=&hnear=Louth,+United+Kingdom&ll=53.370272,-0.004034&spn=0.064883,0.075788&z=14};
-my $return = makeashorterlink($longurl);
-my ($code) = $return =~ /([\w_]+)$/;
-my $prefix = 'http://is.gd/';
+SKIP: {
+    my $return = makeashorterlink($longurl) or do {
+        diag 'No network connectivity?';
+        skip 'No network connectivity?', 6;
+    };
+    like($return, qr{^\Qhttp://is.gd/\E}, "$return looks OK");
 
-is ( makeashorterlink($longurl), $prefix.$code, 'make it shorter');
-is ( makealongerlink($prefix.$code), $longurl, 'make it longer');
-is ( makealongerlink($code), $longurl, 'make it longer by Id',);
+    my ($code) = $return =~ /([\w_]+)$/;
+    my $prefix = 'http://is.gd/';
 
-{
-    eval { &makeashorterlink() };
-    ok($@, 'makeashorterlink fails with no args');
-}
-{
-    eval { &makealongerlink() };
-    ok($@, 'makealongerlink fails with no args');
+    is(makeashorterlink($longurl),          $prefix.$code,  'make it shorter');
+    is(makealongerlink($prefix . $code),    $longurl,       'make it longer');
+    is(makealongerlink($code),              $longurl,       'make it longer by ID');
+
+    {
+        eval { &makeashorterlink() };
+        ok($@, 'makeashorterlink fails with no args');
+    }
+    {
+        eval { &makealongerlink() };
+        ok($@, 'makealongerlink fails with no args');
+    }
 }

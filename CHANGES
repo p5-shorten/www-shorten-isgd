@@ -1,6 +1,7 @@
 Revision history for Perl module WWW-Shorten-IsGd
 
 {{$NEXT}}
+    * Make the tests slightly more robust
 
 0.001     2011-01-18
     * First released version
