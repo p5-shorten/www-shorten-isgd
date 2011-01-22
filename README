@@ -2,7 +2,7 @@ NAME
     WWW::Shorten::IsGd - shorten (or lengthen) URLs with http://is.gd
 
 VERSION
-    version 0.001
+    version 0.002
 
 SYNOPSIS
             use WWW::Shorten::IsGd;
@@ -16,7 +16,7 @@ DESCRIPTION
     A Perl interface to the web site <http://is.gd>. is.gd simply maintains
     a database of long URLs, each of which has a unique identifier.
 
-Functions
+FUNCTIONS
   makeashorterlink
     The function "makeashorterlink" will call the is.gd web site passing it
     your long URL and will return the shortened link.
