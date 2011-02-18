@@ -1,9 +1,9 @@
+package WWW::Shorten::IsGd;
+# ABSTRACT: shorten (or lengthen) URLs with http://is.gd
 use strict;
 use warnings;
 use 5.006;
-
-package WWW::Shorten::IsGd;
-# ABSTRACT: shorten (or lengthen) URLs with http://is.gd
+# VERSION
 
 =head1 SYNOPSIS
 
