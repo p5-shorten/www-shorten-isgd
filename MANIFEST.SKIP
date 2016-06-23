@@ -1,61 +1,132 @@
-
-#!start included /home/mike/perl5/perlbrew/perls/perl-5.12.2/lib/5.12.2/ExtUtils/MANIFEST.SKIP
 # Avoid version control files.
 \bRCS\b
 \bCVS\b
-\bSCCS\b
 ,v$
+,B$
+,D$
 \B\.svn\b
-\B\.git\b
-\B\.gitignore\b
-\b_darcs\b
 \B\.cvsignore$
+\B\.git\b
+\B\.gitignore$
+\B\.bzr\b
+\B\.bzrignore$
 
-# Avoid VMS specific MakeMaker generated files
+^blib/
+^blibdirs$
+^blibdirs\.ts$
+^bpm_to_blib\.ts$
+^Makefile$
+^Makefile\.old$
+^MakeMaker-\d
+^MANIFEST\.bak$
+^MANIFEST\.SKIP$
+^MYMETA\.
+^pm_to_blib$
+^pod2htm.*
+
+# Module::Build
+^Build$
+^_build/
+^Build.bat$
+^Build.COM$
+^BUILD.COM$
+^build.com$
+
+# Author Extras
+^inc/.*\.pod$
+^pkg/
+
+# Editors
+~$
+\#$
+\b\.#
+\.kpf$
+\.sw[pmno]$
+^\.vimrc$
+
+# OS X
+^\.DS_Store$
+^\.Trash/
+\B\._
+
+# VMS
 \bDescrip.MMS$
 \bDESCRIP.MMS$
 \bdescrip.mms$
 
-# Avoid Makemaker generated and utility files.
-\bMANIFEST\.bak
-\bMakefile$
-\bblib/
-\bMakeMaker-\d
-\bpm_to_blib\.ts$
-\bpm_to_blib$
-\bblibdirs\.ts$         # 6.18 through 6.25 generated this
+# Development
+^benchmarks/
+^core$
+^cover_db\b
+^nytprof\b
+^covered\b
+^debian/
+^devel\.
+^.devel-local$
+^out$
+^tmon.out$
 
-# Avoid Module::Build generated and utility files.
-\bBuild$
-\b_build/
-\bBuild.bat$
-\bBuild.COM$
-\bBUILD.COM$
-\bbuild.com$
+# Author Notes
+^notes
+^todo
+^ToDo$
+
+# Common Junk Files
+\.bak$
+\.diff$
+^foo\b.*
+\.old$
+\.orig$
+\.patch$
+\.rej$
+\.tdy$
+\.tmp$
+^\w$
+\.ttc$
+\.pmc$
+
+# Distribution tarballs
+^[^/]+\.tar\.gz$
+
+# Travis CI
+.travis.yml
+.perltidyrc
 
 # Avoid temp and backup files.
 ~$
-\.old$
 \#$
-\b\.#
-\.bak$
-\.tmp$
 \.#
-\.rej$
 
 # Avoid OS-specific files/dirs
-# Mac OSX metadata
+#   Mac OSX metadata
 \B\.DS_Store
-# Mac OSX SMB mount metadata files
+#   Mac OSX SMB mount metadata files
 \B\._
 
-# Avoid Devel::Cover files.
-\bcover_db\b
-#!end included /home/mike/perl5/perlbrew/perls/perl-5.12.2/lib/5.12.2/ExtUtils/MANIFEST.SKIP
+# Avoid archives of this distribution
+\.gz$
+\.ppd$
+\.ppmx$
+\.tgz$
+\.deb$
+\bdebian
+\bDebian_CPANTS.txt$
+-stamp$
 
+# Avoid Eclipse files
+.cproject
+.includepath
+.project
+.settings
 
-# Specific to this project
-^dist\.ini$
-^MANIFEST\.SKIP$
-^\.build$
-^weaver\.ini$
+# Avoid distdir
+\d+\.\d+\b
+^MYMETA.yml$
+^MYMETA\.json$
+
+# Avoid compiler artifacts
+\bcompilet
+\btest-
+\.exe$
+\.o$
+\.mailmap$
