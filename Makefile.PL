@@ -7,7 +7,7 @@ use 5.008001;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Shorten URLs using L<http://is.gd>",
+  "ABSTRACT" => "Shorten URLs using L<https://is.gd>",
   "AUTHOR" => "Mike Doherty <doherty\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
@@ -19,8 +19,9 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Carp" => 0,
     "Exporter" => 0,
+    "HTML::Entities" => 0,
+    "IO::Socket::SSL" => 0,
     "Try::Tiny" => "0.24",
-    "URI" => 0,
     "WWW::Shorten" => "3.09",
     "base" => 0,
     "strict" => 0,
@@ -44,9 +45,10 @@ my %FallbackPrereqs = (
   "Exporter" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
+  "HTML::Entities" => 0,
+  "IO::Socket::SSL" => 0,
   "Test::More" => "0.88",
   "Try::Tiny" => "0.24",
-  "URI" => 0,
   "WWW::Shorten" => "3.09",
   "base" => 0,
   "strict" => 0,

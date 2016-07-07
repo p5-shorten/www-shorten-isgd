@@ -4,38 +4,40 @@ use warnings;
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
-use Carp;
-use URI;
+use Carp ();
+use HTML::Entities qw(decode_entities);
 
 our $VERSION = '0.004';
 $VERSION = eval $VERSION;
 
 sub makeashorterlink {
-    my $url = shift or croak 'No URL passed to makeashorterlink';
+    my $url = shift or Carp::croak('No URL passed to makeashorterlink');
     my $ua = __PACKAGE__->ua();
-    my $response = $ua->post('http://is.gd/create.php', [
+    my $response = $ua->post('https://is.gd/create.php', {
         url => $url,
-        source => 'PerlAPI-' . (defined __PACKAGE__->VERSION ? __PACKAGE__->VERSION : 'dev'),
         format => 'simple',
-    ]);
-    return unless $response->is_success;
-    my $shorturl = $response->{_content};
-    return if $shorturl =~ m/Error/;
-    if ($response->content =~ m{(\Qhttp://is.gd/\E[\w_]+)}) {
-        return $1;
-    }
-    return;
+    });
+
+    return undef unless $response->is_success;
+    my $shorturl = $response->decoded_content;
+    return undef if $shorturl =~ m/Error/;
+    return $shorturl;
 }
 
 sub makealongerlink {
-    my $url = shift or croak 'No is.gd key/URL passed to makealongerlink';
+    my $url = shift or Carp::croak('No is.gd key/URL passed to makealongerlink');
     my $ua = __PACKAGE__->ua();
 
-    $url = "http://is.gd/$url" unless $url =~ m{^https?://}i;
-    my $response = $ua->get($url);
+    $url = "https://is.gd/$url" unless $url =~ m{^https?://}i;
+    my $response = $ua->post('https://is.gd/forward.php', {
+        shorturl => $url,
+        format => 'simple',
+    });
 
-    return unless $response->is_redirect;
-    return $response->header('Location');
+    return undef unless $response->is_success;
+    my $longurl = $response->decoded_content;
+    return undef if $longurl =~ m/Error/;
+    return decode_entities($longurl);
 }
 
 1;
@@ -43,7 +45,7 @@ sub makealongerlink {
 __END__
 =head1 NAME
 
-WWW::Shorten::IsGd - Shorten URLs using L<http://is.gd>
+WWW::Shorten::IsGd - Shorten URLs using L<https://is.gd>
 
 =head1 SYNOPSIS
 
@@ -58,14 +60,14 @@ WWW::Shorten::IsGd - Shorten URLs using L<http://is.gd>
 
 =head1 DESCRIPTION
 
-A Perl interface to the web site L<http://is.gd/>.  The service simply maintains
+A Perl interface to the web site L<https://is.gd/>.  The service simply maintains
 a database of long URLs, each of which has a unique identifier.
 
 =head1 FUNCTIONS
 
 =head2 makeashorterlink
 
-The function C<makeashorterlink> will call the L<http://is.gd> web site passing
+The function C<makeashorterlink> will call the L<https://is.gd> web site passing
 it your long URL and will return the shorter version.
 
 =head2 makealongerlink

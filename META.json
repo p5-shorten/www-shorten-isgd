@@ -1,5 +1,5 @@
 {
-   "abstract" : "Shorten URLs using L<http://is.gd>",
+   "abstract" : "Shorten URLs using L<https://is.gd>",
    "author" : [
       "Mike Doherty <doherty@cpan.org>"
    ],
@@ -50,8 +50,9 @@
          "requires" : {
             "Carp" : "0",
             "Exporter" : "0",
+            "HTML::Entities" : "0",
+            "IO::Socket::SSL" : "0",
             "Try::Tiny" : "0.24",
-            "URI" : "0",
             "WWW::Shorten" : "3.09",
             "base" : "0",
             "perl" : "5.008001",
@@ -96,7 +97,7 @@
       },
       "plugins" : [
          {
-            "class" : "Dist::Zilla::Plugin::GatherDir",
+            "class" : "Dist::Zilla::Plugin::Git::GatherDir",
             "config" : {
                "Dist::Zilla::Plugin::GatherDir" : {
                   "exclude_filename" : [
@@ -110,10 +111,13 @@
                   "prefix" : "",
                   "prune_directory" : [],
                   "root" : "."
+               },
+               "Dist::Zilla::Plugin::Git::GatherDir" : {
+                  "include_untracked" : 0
                }
             },
-            "name" : "@Starter/GatherDir",
-            "version" : "6.005"
+            "name" : "Git::GatherDir",
+            "version" : "2.039"
          },
          {
             "class" : "Dist::Zilla::Plugin::PruneCruft",
@@ -544,6 +548,9 @@
          },
          "version" : "6.005"
       }
-   }
+   },
+   "x_contributors" : [
+      "Chase Whitener <capoeirab@cpan.org>"
+   ]
 }
 

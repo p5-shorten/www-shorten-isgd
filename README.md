@@ -1,6 +1,6 @@
 # NAME
 
-WWW::Shorten::IsGd - Shorten URLs using [http://is.gd](http://is.gd)
+WWW::Shorten::IsGd - Shorten URLs using [https://is.gd](https://is.gd)
 
 # SYNOPSIS
 
@@ -15,14 +15,14 @@ WWW::Shorten::IsGd - Shorten URLs using [http://is.gd](http://is.gd)
 
 # DESCRIPTION
 
-A Perl interface to the web site [http://is.gd/](http://is.gd/).  The service simply maintains
+A Perl interface to the web site [https://is.gd/](https://is.gd/).  The service simply maintains
 a database of long URLs, each of which has a unique identifier.
 
 # FUNCTIONS
 
 ## makeashorterlink
 
-The function `makeashorterlink` will call the [http://is.gd](http://is.gd) web site passing
+The function `makeashorterlink` will call the [https://is.gd](https://is.gd) web site passing
 it your long URL and will return the shorter version.
 
 ## makealongerlink
