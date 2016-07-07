@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    -
+
+0.004     2016-07-06
     - Updated the build to use [@Starter]
     - Placed dependencies in cpanfile
     - Require IO::Socket::SSL now that it's HTTPS only
