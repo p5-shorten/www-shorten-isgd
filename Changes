@@ -1,7 +1,10 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-    -
+    - Clean up URL parsing a bit
+    - Build $VERSION from dist.ini
+    - LWP::Protocol::https requirement
+    - Remove requirement for IO::Socket::SSL
 
 0.004     2016-07-06
     - Updated the build to use [@Starter]

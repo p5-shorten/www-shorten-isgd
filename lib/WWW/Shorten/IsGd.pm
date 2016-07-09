@@ -1,13 +1,15 @@
 package WWW::Shorten::IsGd;
+
 use strict;
 use warnings;
 
 use base qw( WWW::Shorten::generic Exporter );
 our @EXPORT = qw( makeashorterlink makealongerlink );
+
 use Carp ();
 use HTML::Entities qw(decode_entities);
 
-our $VERSION = '0.005';
+# VERSION
 $VERSION = eval $VERSION;
 
 sub makeashorterlink {
@@ -20,7 +22,8 @@ sub makeashorterlink {
 
     return undef unless $response->is_success;
     my $shorturl = $response->decoded_content;
-    return undef if $shorturl =~ m/Error/;
+    return undef unless $shorturl;
+    return undef if $shorturl =~ m/^\s*Error/;
     return $shorturl;
 }
 
@@ -29,14 +32,15 @@ sub makealongerlink {
     my $ua = __PACKAGE__->ua();
 
     $url = "https://is.gd/$url" unless $url =~ m{^https?://}i;
-    my $response = $ua->post('https://is.gd/forward.php', {
+    my $res = $ua->post('https://is.gd/forward.php', {
         shorturl => $url,
         format => 'simple',
     });
 
-    return undef unless $response->is_success;
-    my $longurl = $response->decoded_content;
-    return undef if $longurl =~ m/Error/;
+    return undef unless $res->is_success;
+    my $longurl = $res->decoded_content;
+    return undef unless $longurl;
+    return undef if $longurl =~ m/^\s*Error/;
     return decode_entities($longurl);
 }
 

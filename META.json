@@ -51,7 +51,7 @@
             "Carp" : "0",
             "Exporter" : "0",
             "HTML::Entities" : "0",
-            "IO::Socket::SSL" : "0",
+            "LWP::Protocol::https" : "0",
             "Try::Tiny" : "0.24",
             "WWW::Shorten" : "3.09",
             "base" : "0",
@@ -269,6 +269,11 @@
             "version" : "6.005"
          },
          {
+            "class" : "Dist::Zilla::Plugin::OurPkgVersion",
+            "name" : "OurPkgVersion",
+            "version" : "0.10"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
             "config" : {
                "Dist::Zilla::Role::FileWatcher" : {
@@ -427,11 +432,6 @@
             "class" : "Dist::Zilla::Plugin::Test::ChangesHasContent",
             "name" : "Test::ChangesHasContent",
             "version" : "0.010"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::PkgVersion",
-            "name" : "PkgVersion",
-            "version" : "6.005"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::Kwalitee",
