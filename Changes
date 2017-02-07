@@ -1,6 +1,9 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - 
+
+0.005     2017-02-06
     - Clean up URL parsing a bit
     - Add LICENSE file to repository
     - Add CONTRIBUTING.md to repository

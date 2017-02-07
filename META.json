@@ -75,7 +75,7 @@
    "provides" : {
       "WWW::Shorten::IsGd" : {
          "file" : "lib/WWW/Shorten/IsGd.pm",
-         "version" : "0.005"
+         "version" : "0.006"
       }
    },
    "release_status" : "stable",
@@ -90,7 +90,7 @@
          "web" : "https://github.com/p5-shorten/www-shorten-isgd"
       }
    },
-   "version" : "0.005",
+   "version" : "0.006",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.024000"
@@ -401,7 +401,7 @@
                   "branch" : null,
                   "changelog" : "Changes",
                   "signed" : 0,
-                  "tag" : "v0.005",
+                  "tag" : "v0.006",
                   "tag_format" : "v%v",
                   "tag_message" : "v%v"
                },
