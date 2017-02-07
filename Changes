@@ -2,7 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
     - Clean up URL parsing a bit
-    - Build $VERSION from dist.ini
+    - Add LICENSE file to repository
+    - Add CONTRIBUTING.md to repository
     - LWP::Protocol::https requirement
     - Remove requirement for IO::Socket::SSL
 
